@@ -1,577 +1,202 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080719">
-
-<title>The Universe Is You | Pedy ♡ Anna</title>
+<title>PEDY ♡ ANNA</title>
 
 <style>
-:root {
-    --bg: #080719;
-    --pink: #ff80b5;
-    --purple: #a78bfa;
-    --white: #fff5fc;
-    --glass: rgba(255, 255, 255, 0.07);
-}
-
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
 }
 
 body {
+    margin: 0;
     min-height: 100vh;
-    overflow-x: hidden;
-    background: var(--bg);
-    color: var(--white);
     font-family: "Segoe UI", Arial, sans-serif;
-}
-
-button, input {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-}
-
-button:focus-visible,
-input:focus-visible {
-    outline: 2px solid var(--pink);
-    outline-offset: 4px;
-}
-
-#universe {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.aurora {
-    position: fixed;
-    inset: -30%;
-    z-index: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(ellipse at 20% 35%,
-            rgba(120, 65, 180, 0.18), transparent 45%),
-        radial-gradient(ellipse at 80% 70%,
-            rgba(255, 90, 160, 0.13), transparent 40%),
-        radial-gradient(ellipse at 50% 50%,
-            rgba(50, 80, 180, 0.12), transparent 50%);
-    filter: blur(30px);
-    animation: auroraMove 16s ease-in-out infinite alternate;
-}
-
-@keyframes auroraMove {
-    from {
-        transform: translate(-3%, -2%) rotate(-5deg) scale(1);
-    }
-
-    to {
-        transform: translate(3%, 2%) rotate(5deg) scale(1.15);
-    }
-}
-
-#app {
-    position: relative;
-    z-index: 1;
+    background: linear-gradient(135deg, #fff0f5, #ffe0e9, #fff7f0);
+    color: #743b50;
+    text-align: center;
 }
 
 .page {
     display: none;
     min-height: 100vh;
-    width: 100%;
-    padding: 35px 20px;
+    padding: 35px 18px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    text-align: center;
-    animation: pageEnter 0.8s ease both;
 }
 
 .page.active {
     display: flex;
 }
 
-@keyframes pageEnter {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.eyebrow {
-    color: #d8b9ff;
-    font-size: 11px;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-}
-
 h1 {
-    font-size: clamp(34px, 8vw, 76px);
-    line-height: 1.1;
-    font-weight: 800;
-    letter-spacing: -2px;
+    font-size: clamp(30px, 7vw, 48px);
+    margin-bottom: 12px;
 }
 
-.gradient-text {
-    color: transparent;
-    background: linear-gradient(
-        100deg,
-        #ffffff,
-        #ffc3e0,
-        #bda7ff,
-        #ffffff
-    );
-    background-size: 250% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    animation: shine 6s linear infinite;
+p {
+    font-size: 17px;
+    line-height: 1.8;
 }
 
-@keyframes shine {
-    to {
-        background-position: 250% center;
-    }
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 13px 27px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
 }
 
-.subtitle {
-    color: #c2b8db;
-    font-size: 15px;
-    line-height: 1.9;
-    max-width: 480px;
-    margin-top: 20px;
+button:hover {
+    transform: scale(1.04);
 }
 
-.glow-button {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    border-radius: 50px;
-    padding: 15px 28px;
+.primary {
+    background: #e8799c;
     color: white;
-    font-weight: 700;
-    letter-spacing: 1px;
-    background: linear-gradient(110deg, #c25dba, #7863e8);
-    box-shadow: 0 0 30px rgba(186, 102, 230, 0.24);
-    transition: 0.25s;
+    box-shadow: 0 5px 15px #e8799c44;
 }
 
-.glow-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 42px rgba(220, 128, 255, 0.45);
+.secondary {
+    background: white;
+    color: #a95775;
+    border: 1px solid #f0b5c8;
 }
 
-.glow-button:active {
-    transform: scale(0.97);
-}
-
-.outline-button {
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 50px;
-    padding: 12px 23px;
-    background: rgba(255, 255, 255, 0.04);
-    color: #f7eaff;
-    transition: 0.2s;
-}
-
-.outline-button:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.small-note {
-    margin-top: 25px;
-    color: #817898;
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-.signature {
-    margin-top: 40px;
-    color: #ba9acb;
-    font-size: 11px;
-    letter-spacing: 5px;
-}
-
-/* FIRST PAGE */
-
-.question-mark {
-    width: 115px;
-    height: 115px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 35px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(242, 130, 198, 0.2),
-        rgba(130, 85, 220, 0.05)
-    );
-    box-shadow:
-        0 0 35px rgba(213, 109, 213, 0.12),
-        inset 0 0 25px rgba(255, 255, 255, 0.04);
-    font-size: 42px;
-    animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.choice-row {
+.buttons {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 18px;
-    margin-top: 35px;
-    min-height: 58px;
+    margin-top: 25px;
+    min-height: 60px;
 }
 
 #noBtn {
-    background: rgba(255, 255, 255, 0.06);
-    color: #e9dff7;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50px;
-    padding: 15px 28px;
-    white-space: nowrap;
+    background: white;
+    color: #a95775;
+    border: 1px solid #f0b5c8;
     z-index: 10;
+    white-space: nowrap;
 }
 
-/* GALAXY PAGE */
-
-.section-title {
-    font-size: clamp(28px, 6vw, 48px);
-    margin-bottom: 12px;
-}
-
-.stars-instruction {
-    max-width: 500px;
-    color: #bfb3d7;
-    line-height: 1.8;
-    margin: 12px auto 20px;
-}
-
-.star-map {
-    position: relative;
-    width: min(520px, 95vw);
-    height: 290px;
-    margin: 20px auto;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 28px;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 25% 30%,
-            rgba(139, 92, 246, 0.14), transparent 35%),
-        radial-gradient(circle at 80% 75%,
-            rgba(255, 110, 180, 0.12), transparent 35%),
-        rgba(255, 255, 255, 0.025);
-    box-shadow: 0 15px 60px rgba(0, 0, 0, 0.15);
-}
-
-.constellation-line {
-    position: absolute;
-    height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(210, 180, 255, 0.5),
-        transparent
-    );
-    transform-origin: left;
-    pointer-events: none;
-    opacity: 0.65;
-}
-
-.star-point {
-    position: absolute;
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
-    background: transparent;
-    color: #f6dcff;
-    display: grid;
-    place-items: center;
-    font-size: 25px;
-    text-shadow: 0 0 15px #bda4ff;
-    animation: starPulse 2.5s ease-in-out infinite;
-    transition: 0.3s;
-}
-
-.star-point:hover {
-    transform: scale(1.3);
-}
-
-.star-point.found {
-    color: #ff9bc9;
-    text-shadow: 0 0 18px #ff7eb7;
-    animation: foundPulse 0.7s ease;
-}
-
-@keyframes starPulse {
-    0%, 100% {
-        opacity: 0.6;
-    }
-
-    50% {
-        opacity: 1;
-    }
-}
-
-@keyframes foundPulse {
-    50% {
-        transform: scale(1.7);
-    }
-}
-
-#star1 {
-    left: 17%;
-    top: 24%;
-}
-
-#star2 {
-    left: 70%;
-    top: 39%;
-    animation-delay: 0.7s;
-}
-
-#star3 {
-    left: 43%;
-    top: 68%;
-    animation-delay: 1.2s;
-}
-
-.star-counter {
-    color: #d9c5f6;
-    font-size: 12px;
+.signature {
+    margin-top: 35px;
+    font-size: 14px;
     letter-spacing: 3px;
-    margin-bottom: 20px;
+    color: #bd7790;
 }
 
-.clue-box {
-    display: none;
-    max-width: 500px;
-    width: 100%;
-    padding: 20px;
-    margin: 10px auto 20px;
-    border: 1px solid rgba(255, 154, 210, 0.3);
-    border-radius: 18px;
-    background: rgba(255, 126, 183, 0.07);
-    color: #ffe4f3;
-    line-height: 1.8;
-}
-
-.clue-box.show {
-    display: block;
-    animation: pageEnter 0.5s ease;
-}
-
-#unlockButton {
-    display: none;
-}
-
-#unlockButton.show {
-    display: inline-block;
-}
-
-/* LOCK PAGE */
-
-.lock-icon {
-    width: 90px;
-    height: 90px;
+.menu {
     display: grid;
-    place-items: center;
-    font-size: 40px;
-    margin-bottom: 25px;
-    border-radius: 28px;
-    background: linear-gradient(
-        145deg,
-        rgba(196, 122, 239, 0.17),
-        rgba(255, 131, 192, 0.08)
-    );
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 0 40px rgba(187, 112, 226, 0.1);
-}
-
-.lock-form {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    width: min(650px, 100%);
     margin-top: 25px;
 }
 
-#secretCode {
-    width: 180px;
-    padding: 14px 18px;
-    text-align: center;
-    color: white;
-    letter-spacing: 7px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 14px;
-    outline: none;
+.card {
+    background: #ffffffc9;
+    border: 1px solid #f5c5d5;
+    border-radius: 22px;
+    padding: 25px 12px;
+    box-shadow: 0 8px 25px #b95d7b12;
 }
 
-#secretCode::placeholder {
-    color: #837694;
-    letter-spacing: 3px;
-    font-size: 11px;
-}
-
-#lockMessage {
-    min-height: 28px;
-    margin-top: 18px;
-    color: #ff9ecb;
-    font-size: 13px;
-}
-
-/* LETTER PAGE */
-
-.letter-card {
-    position: relative;
-    width: min(570px, 100%);
-    padding: 35px 28px;
-    margin: 25px auto;
-    text-align: left;
-    color: #fceaf7;
-    border: 1px solid rgba(255, 183, 221, 0.24);
-    border-radius: 25px;
-    background: linear-gradient(
-        145deg,
-        rgba(255, 255, 255, 0.09),
-        rgba(255, 255, 255, 0.025)
-    );
-    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.22);
-    backdrop-filter: blur(15px);
-}
-
-.letter-card h2 {
-    font-size: 26px;
-    margin-bottom: 22px;
-    color: #ffb5d7;
-}
-
-.letter-card p {
-    font-size: 15px;
-    line-height: 2;
-    margin-bottom: 17px;
-    color: #e2d7ef;
-}
-
-.letter-signature {
-    margin-top: 25px;
+.card h3 {
+    margin: 0 0 8px;
     font-size: 18px;
-    color: #ffacd3;
-    text-align: right;
 }
 
-.final-star {
-    font-size: 44px;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 20px #ff80c0);
-    animation: float 3s ease-in-out infinite;
+.card p {
+    font-size: 14px;
+    margin: 0 0 15px;
 }
 
-/* ENDING */
-
-#heartLayer {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 20;
-    overflow: hidden;
+.card button {
+    padding: 10px 17px;
+    font-size: 14px;
 }
 
-.floating-heart {
-    position: absolute;
-    bottom: -30px;
-    color: #ff9dce;
-    font-size: 20px;
-    text-shadow: 0 0 15px #ff75bb;
-    animation: heartRise 5s linear forwards;
+.panel {
+    width: min(600px, 100%);
+    background: #ffffffd9;
+    border: 1px solid #f3c0d1;
+    border-radius: 25px;
+    padding: 28px 22px;
+    margin-top: 20px;
+    box-shadow: 0 10px 35px #b95d7b15;
 }
 
-@keyframes heartRise {
-    0% {
-        transform: translateY(0) rotate(0deg) scale(0.7);
-        opacity: 0;
-    }
-
-    15% {
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(-110vh) rotate(260deg) scale(1.3);
-        opacity: 0;
-    }
+.envelope {
+    width: 200px;
+    max-width: 100%;
+    height: 130px;
+    margin: 25px auto;
+    background: #e995b0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px #d56e941f;
 }
 
-.hidden {
-    display: none !important;
+.letter {
+    display: none;
+    text-align: left;
+    background: #fff8f5;
+    padding: 22px;
+    border-radius: 16px;
+    line-height: 1.9;
 }
 
-@media (max-width: 500px) {
-    .page {
-        padding: 30px 17px;
-    }
-
-    h1 {
-        letter-spacing: -1px;
-    }
-
-    .star-map {
-        height: 260px;
-    }
-
-    .letter-card {
-        padding: 25px 20px;
-    }
-
-    .choice-row {
-        gap: 12px;
-    }
-
-    .glow-button,
-    #noBtn {
-        padding: 13px 22px;
-    }
+.reason {
+    font-size: 21px;
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
+.timeline {
+    text-align: left;
+    border-left: 3px solid #e995b0;
+    padding-left: 20px;
+    margin: 25px 5px;
+}
+
+.event {
+    margin-bottom: 25px;
+}
+
+.event h3 {
+    margin-bottom: 5px;
+}
+
+.event p {
+    margin-top: 0;
+    font-size: 15px;
+}
+
+.back {
+    margin-top: 25px;
+}
+
+@media (max-width: 480px) {
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 20px;
     }
 }
 </style>
@@ -579,426 +204,137 @@ h1 {
 
 <body>
 
-<canvas id="universe"></canvas>
-<div class="aurora"></div>
-<div id="heartLayer"></div>
-
-<main id="app">
-
-<!-- PAGE 1: THE QUESTION -->
-
+<!-- PAGE 1 -->
 <section id="homePage" class="page active">
-
-    <div class="question-mark">✦</div>
-
-    <div class="eyebrow">A MESSAGE FROM THE UNIVERSE</div>
-
-    <h1 class="gradient-text">
-        DO YOU<br>LOVE ME?
-    </h1>
-
-    <p class="subtitle">
-        Somewhere among billions of stars,<br>
-        someone is waiting for your answer.
-    </p>
-
-    <div class="choice-row">
-        <button class="glow-button" onclick="enterUniverse()">
-            YES
-        </button>
-
-        <button id="noBtn" type="button">
-            NO
-        </button>
-    </div>
-
-    <div class="small-note">A LITTLE UNIVERSE MADE JUST FOR YOU</div>
-
-    <div class="signature">PEDY ♡ ANNA</div>
-
-</section>
-
-
-<!-- PAGE 2: THE UNIVERSE -->
-
-<section id="universePage" class="page">
-
-    <div class="eyebrow">CHAPTER I — THE BEGINNING</div>
-
-    <h1 class="section-title gradient-text">
-        THE UNIVERSE IS YOU
-    </h1>
-
-    <p class="stars-instruction">
-        There are three special stars hidden in this little universe.
-        Find all three to discover a secret made just for you.
-    </p>
-
-    <div class="star-map">
-
-        <div class="constellation-line"
-             style="left:25%;top:34%;width:53%;transform:rotate(12deg)">
-        </div>
-
-        <div class="constellation-line"
-             style="left:73%;top:48%;width:36%;transform:rotate(130deg)">
-        </div>
-
-        <div class="constellation-line"
-             style="left:24%;top:35%;width:52%;transform:rotate(57deg)">
-        </div>
-
-        <button class="star-point"
-                id="star1"
-                aria-label="Find the first star"
-                onclick="findStar(1)">✦</button>
-
-        <button class="star-point"
-                id="star2"
-                aria-label="Find the second star"
-                onclick="findStar(2)">✧</button>
-
-        <button class="star-point"
-                id="star3"
-                aria-label="Find the third star"
-                onclick="findStar(3)">✦</button>
-
-    </div>
-
-    <div class="star-counter" id="starCounter">
-        STARS FOUND: 0 / 3
-    </div>
-
-    <div class="clue-box" id="clueBox" aria-live="polite"></div>
-
-    <button class="glow-button" id="unlockButton"
-            onclick="showPage('lockPage')">
-        DISCOVER THE SECRET
-    </button>
-
-    <button class="outline-button" style="margin-top:20px"
-            onclick="showPage('homePage')">
-        BACK
-    </button>
-
-</section>
-
-
-<!-- PAGE 3: THE SECRET LOCK -->
-
-<section id="lockPage" class="page">
-
-    <div class="lock-icon">⌑</div>
-
-    <div class="eyebrow">CHAPTER II — THE SECRET</div>
-
-    <h1 class="section-title gradient-text">
-        ONE LITTLE CODE
-    </h1>
-
-    <p class="subtitle">
-        I have a secret message for you.<br>
-        Can you figure out the three-digit code?
-    </p>
-
-    <div class="letter-card" style="text-align:center">
-
-        <p>
-            <strong style="color:#ffb7da">HINT</strong>
-        </p>
-
-        <p>
-            One digit for <strong>I</strong>.<br>
-            One digit for <strong>LOVE</strong>.<br>
-            One digit for <strong>YOU</strong>.
-        </p>
-
-        <p style="font-size:13px;color:#a99bbb">
-            Think of a popular way to write those three words.
-        </p>
-
-    </div>
-
-    <form class="lock-form" onsubmit="checkCode(event)">
-
-        <input
-            id="secretCode"
-            type="password"
-            inputmode="numeric"
-            maxlength="3"
-            placeholder="3-DIGIT CODE"
-            aria-label="Enter the secret three digit code"
-            autocomplete="off"
-            required
-        >
-
-        <button class="glow-button" type="submit">
-            UNLOCK
-        </button>
-
-    </form>
-
-    <p id="lockMessage" aria-live="polite"></p>
-
-    <button class="outline-button"
-            onclick="showPage('universePage')">
-        GO BACK
-    </button>
-
-</section>
-
-
-<!-- PAGE 4: THE SECRET LETTER -->
-
-<section id="letterPage" class="page">
-
-    <div class="eyebrow">CHAPTER III — JUST FOR YOU</div>
-
-    <div class="final-star">✦</div>
-
-    <h1 class="section-title gradient-text">
-        YOU FOUND ME
-    </h1>
-
-    <p class="subtitle">
-        Out of all the stars in the universe,<br>
-        this little message was waiting for you.
-    </p>
-
-    <article class="letter-card">
-
-        <h2>Dear Anna,</h2>
-
-        <p>
-            If the universe had a million stars, I would still want
-            to find the one that led me to you.
-        </p>
-
-        <p>
-            I made this little website because sometimes a simple
-            message doesn't feel like enough to say what's in my heart.
-            So I wanted to make you a tiny world of your own.
-        </p>
-
-        <p>
-            You make ordinary moments feel special. Talking to you,
-            laughing with you, and sharing little moments with you
-            mean more to me than I can explain.
-        </p>
-
-        <p>
-            No matter how big the universe is, I'm glad that somewhere
-            in it, our paths crossed.
-        </p>
-
-        <p>
-            This little universe is just a small reminder that
-            someone is thinking about you and wants to make you smile.
-        </p>
-
-        <div class="letter-signature">
-            With love,<br>
-            Pedy ♡
-        </div>
-
-    </article>
-
-    <button class="glow-button" onclick="showEnding()">
-        ONE LAST THING
-    </button>
-
-</section>
-
-
-<!-- PAGE 5: THE ENDING -->
-
-<section id="endingPage" class="page">
-
-    <div class="eyebrow">MY FAVORITE PERSON</div>
-
-    <div class="final-star">✦</div>
-
-    <h1 class="gradient-text">
-        YOU ARE<br>MY FAVORITE<br>UNIVERSE.
-    </h1>
-
-    <p class="subtitle">
-        Billions of stars.<br>
-        Endless galaxies.<br>
-        And still, you are my favorite part.
-    </p>
-
-    <div style="margin-top:30px">
-        <button class="glow-button" onclick="makeItRain()">
-            MAKE A WISH
-        </button>
+    <h1>DO YOU LOVE ME?</h1>
+    <p>I have one very important question for you, Anna...</p>
+
+    <div class="buttons">
+        <button class="primary" onclick="showPage('mainPage')">YES</button>
+        <button id="noBtn" class="secondary">NO</button>
     </div>
 
     <div class="signature">MADE WITH LOVE BY PEDY</div>
-
-    <button class="outline-button"
-            style="margin-top:25px"
-            onclick="showPage('homePage')">
-        START AGAIN
-    </button>
-
 </section>
 
-</main>
+<!-- PAGE 2 -->
+<section id="mainPage" class="page">
+    <h1>ILYYY, ANNA!</h1>
+    <p>I made a little something just for you.</p>
+    <p>Choose what you want to open ♡</p>
 
+    <div class="menu">
+        <div class="card">
+            <h3>A Secret Letter</h3>
+            <p>A little message from me to you.</p>
+            <button class="primary" onclick="showPage('letterPage')">OPEN LETTER</button>
+        </div>
+
+        <div class="card">
+            <h3>Reasons I Love You</h3>
+            <p>There are so many reasons.</p>
+            <button class="primary" onclick="showPage('reasonsPage')">DISCOVER</button>
+        </div>
+
+        <div class="card">
+            <h3>Our Little Story</h3>
+            <p>A little timeline of our story.</p>
+            <button class="primary" onclick="showPage('storyPage')">OPEN STORY</button>
+        </div>
+    </div>
+
+    <div class="signature">PEDY ♡ ANNA</div>
+</section>
+
+<!-- SECRET LETTER -->
+<section id="letterPage" class="page">
+    <h1>A LETTER FOR YOU</h1>
+    <p>There's something I want you to read.</p>
+
+    <div class="envelope" onclick="openLetter()">
+        OPEN MY LETTER
+    </div>
+
+    <div id="letterText" class="letter">
+        <h2>Dear Anna,</h2>
+
+        <p>
+            Hey Anna, I just wanted to make something special for you.
+            You mean so much to me, and I'm really happy that you're
+            part of my life.
+        </p>
+
+        <p>
+            Even a normal conversation with you can make my day better.
+            I hope this little website makes you smile, because you
+            deserve so many reasons to smile.
+        </p>
+
+        <p>
+            Thank you for being you. I'm so lucky to have you in my life.
+        </p>
+
+        <p>
+            I love you so much ♡
+        </p>
+
+        <p>Forever yours,<br><strong>Pedy</strong></p>
+    </div>
+
+    <button class="secondary back" onclick="showPage('mainPage')">GO BACK</button>
+</section>
+
+<!-- REASONS -->
+<section id="reasonsPage" class="page">
+    <h1>WHY I LOVE YOU</h1>
+    <p>Click the button to discover another reason.</p>
+
+    <div class="panel">
+        <div id="reasonText" class="reason">
+            Every little thing about you matters to me.
+        </div>
+
+        <button class="primary" onclick="nextReason()">ANOTHER REASON</button>
+    </div>
+
+    <button class="secondary back" onclick="showPage('mainPage')">GO BACK</button>
+</section>
+
+<!-- OUR STORY -->
+<section id="storyPage" class="page">
+    <h1>OUR LITTLE STORY</h1>
+    <p>Every story has its own special moments.</p>
+
+    <div class="panel timeline">
+        <div class="event">
+            <h3>The Beginning</h3>
+            <p>The start of something special.</p>
+        </div>
+
+        <div class="event">
+            <h3>More Conversations</h3>
+            <p>Getting to know each other a little more.</p>
+        </div>
+
+        <div class="event">
+            <h3>New Memories</h3>
+            <p>Little moments that mean a lot.</p>
+        </div>
+
+        <div class="event">
+            <h3>The Next Chapter</h3>
+            <p>More memories waiting to be made together.</p>
+        </div>
+    </div>
+
+    <button class="secondary" onclick="showPage('mainPage')">GO BACK</button>
+</section>
 
 <script>
-
-/* =========================================
-   1. MOVING STAR BACKGROUND
-========================================= */
-
-const canvas = document.getElementById("universe");
-const ctx = canvas.getContext("2d");
-
-let width = 0;
-let height = 0;
-let stars = [];
-let shootingStars = [];
-
-function resizeCanvas() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-    width = window.innerWidth;
-    height = window.innerHeight;
-
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-
-    canvas.style.width = width + "px";
-    canvas.style.height = height + "px";
-
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const count = Math.min(
-        180,
-        Math.floor((width * height) / 6500)
-    );
-
-    stars = [];
-
-    for (let i = 0; i < count; i++) {
-        stars.push({
-            x: Math.random() * width,
-            y: Math.random() * height,
-            radius: Math.random() * 1.5 + 0.3,
-            alpha: Math.random() * 0.8 + 0.2,
-            speed: Math.random() * 0.008 + 0.002,
-            phase: Math.random() * Math.PI * 2
-        });
-    }
-}
-
-function createShootingStar() {
-    shootingStars.push({
-        x: Math.random() * width * 0.8,
-        y: Math.random() * height * 0.45,
-        length: Math.random() * 100 + 50,
-        speed: Math.random() * 7 + 5,
-        alpha: 1
-    });
-}
-
-function animateUniverse() {
-    ctx.clearRect(0, 0, width, height);
-
-    const time = performance.now() * 0.001;
-
-    for (const star of stars) {
-        const twinkle =
-            0.45 + Math.sin(time + star.phase) * 0.35;
-
-        ctx.beginPath();
-
-        ctx.arc(
-            star.x,
-            star.y,
-            star.radius,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle =
-            `rgba(231, 218, 255, ${star.alpha * twinkle})`;
-
-        ctx.fill();
-    }
-
-    for (let i = shootingStars.length - 1; i >= 0; i--) {
-        const s = shootingStars[i];
-
-        ctx.beginPath();
-
-        ctx.moveTo(s.x, s.y);
-
-        ctx.lineTo(
-            s.x - s.length,
-            s.y - s.length * 0.45
-        );
-
-        ctx.strokeStyle = `rgba(255, 205, 239, ${s.alpha})`;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-
-        s.x += s.speed;
-        s.y += s.speed * 0.45;
-        s.alpha -= 0.012;
-
-        if (s.alpha <= 0) {
-            shootingStars.splice(i, 1);
-        }
-    }
-
-    requestAnimationFrame(animateUniverse);
-}
-
-window.addEventListener("resize", resizeCanvas);
-
-resizeCanvas();
-animateUniverse();
-
-setInterval(() => {
-    if (Math.random() > 0.35) {
-        createShootingStar();
-    }
-}, 2400);
-
-
-/* =========================================
-   2. PAGE NAVIGATION
-========================================= */
-
-function showPage(pageId) {
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
-
-    const page = document.getElementById(pageId);
-
-    if (page) {
-        page.classList.add("active");
-    }
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-
-/* =========================================
-   3. THE RUNAWAY NO BUTTON
-========================================= */
-
 const noBtn = document.getElementById("noBtn");
 
 function moveNo() {
-    const padding = 12;
+    const padding = 10;
 
     const maxX = Math.max(
         padding,
@@ -1018,173 +354,61 @@ function moveNo() {
     noBtn.style.top = y + "px";
 }
 
-noBtn.addEventListener("pointerenter", moveNo);
+noBtn.addEventListener("mouseenter", moveNo);
 
-noBtn.addEventListener("pointerdown", event => {
+noBtn.addEventListener("pointerdown", function(event) {
     event.preventDefault();
     moveNo();
 });
 
-noBtn.addEventListener("touchstart", event => {
+noBtn.addEventListener("touchstart", function(event) {
     event.preventDefault();
     moveNo();
 }, { passive: false });
 
+function showPage(pageId) {
+    document.querySelectorAll(".page").forEach(function(page) {
+        page.classList.remove("active");
+    });
 
-/* =========================================
-   4. ENTER THE UNIVERSE
-========================================= */
+    document.getElementById(pageId).classList.add("active");
 
-function enterUniverse() {
-    showPage("universePage");
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
+function openLetter() {
+    const letter = document.getElementById("letterText");
+    letter.style.display = "block";
 
-/* =========================================
-   5. FIND THE THREE HIDDEN STARS
-========================================= */
-
-const foundStars = new Set();
-
-const clues = {
-    1: "FIRST STAR: Even the darkest night has a little light.",
-    2: "SECOND STAR: The smallest moments can mean the most.",
-    3: "THIRD STAR: Sometimes three little numbers say it all."
-};
-
-function findStar(number) {
-    if (foundStars.has(number)) {
-        const box = document.getElementById("clueBox");
-        box.textContent = clues[number];
-        box.classList.add("show");
-        return;
-    }
-
-    foundStars.add(number);
-
-    const star = document.getElementById("star" + number);
-
-    star.classList.add("found");
-    star.textContent = "✦";
-
-    document.getElementById("starCounter").textContent =
-        `STARS FOUND: ${foundStars.size} / 3`;
-
-    const box = document.getElementById("clueBox");
-
-    box.textContent = clues[number];
-    box.classList.add("show");
-
-    createShootingStar();
-
-    if (foundStars.size === 3) {
-        box.textContent =
-            "YOU FOUND EVERY STAR. THE SECRET IS WAITING FOR YOU.";
-
-        document.getElementById("unlockButton")
-            .classList.add("show");
-    }
+    document.querySelector(".envelope").style.display = "none";
 }
 
+const reasons = [
+    "You make me smile without even trying.",
+    "I love talking to you.",
+    "You make ordinary moments feel special.",
+    "You have a special place in my heart.",
+    "You can make my day better.",
+    "I love the little things about you.",
+    "You make me happy just by being yourself.",
+    "I love making memories with you.",
+    "You mean more to me than words can explain.",
+    "Because you're Anna, and that's already enough."
+];
 
-/* =========================================
-   6. UNLOCK THE SECRET CODE
-========================================= */
+let reasonIndex = 0;
 
-/*
-   The answer is 143:
-   I = 1 letter
-   LOVE = 4 letters
-   YOU = 3 letters
-*/
+function nextReason() {
+    const reasonText = document.getElementById("reasonText");
 
-function checkCode(event) {
-    event.preventDefault();
+    reasonText.textContent = reasons[reasonIndex];
 
-    const input = document.getElementById("secretCode");
-    const message = document.getElementById("lockMessage");
-
-    const code = input.value.trim();
-
-    if (code === "143") {
-        message.textContent = "THE SECRET IS UNLOCKED.";
-
-        input.value = "";
-
-        setTimeout(() => {
-            showPage("letterPage");
-            makeItRain();
-        }, 700);
-
-    } else {
-        message.textContent =
-            "NOT QUITE. REMEMBER: I, LOVE, YOU.";
-
-        input.value = "";
-
-        input.animate(
-            [
-                { transform: "translateX(0)" },
-                { transform: "translateX(-6px)" },
-                { transform: "translateX(6px)" },
-                { transform: "translateX(0)" }
-            ],
-            {
-                duration: 250
-            }
-        );
-    }
+    reasonIndex = (reasonIndex + 1) % reasons.length;
 }
-
-
-/* =========================================
-   7. FLOATING HEARTS
-========================================= */
-
-function makeItRain() {
-    const layer = document.getElementById("heartLayer");
-
-    const symbols = ["♡", "♥", "✦", "✧"];
-
-    for (let i = 0; i < 30; i++) {
-        setTimeout(() => {
-            const heart = document.createElement("span");
-
-            heart.className = "floating-heart";
-
-            heart.textContent =
-                symbols[Math.floor(Math.random() * symbols.length)];
-
-            heart.style.left = Math.random() * 100 + "%";
-
-            heart.style.fontSize =
-                (Math.random() * 18 + 12) + "px";
-
-            heart.style.animationDuration =
-                (Math.random() * 3 + 4) + "s";
-
-            layer.appendChild(heart);
-
-            setTimeout(() => {
-                heart.remove();
-            }, 7500);
-
-        }, i * 100);
-    }
-}
-
-
-/* =========================================
-   8. FINAL MOMENT
-========================================= */
-
-function showEnding() {
-    showPage("endingPage");
-    makeItRain();
-}
-
 </script>
 
 </body>
 </html>
-```
